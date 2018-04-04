@@ -29,15 +29,30 @@ public class Main {
         }
         int [] tabShort2 = Arrays.copyOf(tabShort, tabShort.length);
 
-        long start3 = System.currentTimeMillis();
+        long start3 = System.nanoTime();
         HeapSort.heapSort(tabShort);
         long end3 = System.nanoTime();
         System.out.println("Heapsorting (100 ints) took "+(end3-start3)+"ns.");
-        long start4 = System.currentTimeMillis();
+        long start4 = System.nanoTime();
         QuickSort.quickSort(tabShort2);
         long end4 = System.nanoTime();
         System.out.println("Quicksorting (100 ints) took "+(end4 - start4)+"ns.");
-        System.out.println("The difference was "+((end4-start4)-(end3-start3))+"ns.");
+
+        //Pre-sorted array (10000 ints)
+        int [] tabSorted = new int[10000];
+        for(int i = 10000; i<tabSorted.length; i++){
+            tabSorted[i] = i;
+        }
+
+        long start5 = System.nanoTime();
+        HeapSort.heapSort(tabShort);
+        long end5 = System.nanoTime();
+        System.out.println("Heapsorting (10000 ints, pre-sorted) took "+(end5-start5)+"ns.");
+        long start6 = System.nanoTime();
+        QuickSort.quickSort(tabShort2);
+        long end6 = System.nanoTime();
+        System.out.println("Quicksorting (10000 ints, pre-sorted) took "+(end6 - start6)+"ns.");
+
 
 
     }
